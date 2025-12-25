@@ -1,0 +1,10 @@
+nodes/
+*.ts
+!dist/**/*.d.ts
+tsconfig.json
+.github/
+.vscode/
+.git/
+.gitignore
+*.md
+!README.md

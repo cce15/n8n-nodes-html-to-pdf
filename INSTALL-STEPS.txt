@@ -1,0 +1,216 @@
+================================================================================
+  SIMPLE INSTALLATION GUIDE - Install n8n-nodes-html-to-pdf on Remote Server
+================================================================================
+
+PREREQUISITES:
+- SSH access to your n8n server
+- n8n already installed and running on the server
+
+================================================================================
+METHOD 1: EASIEST - Using Installation Script (Windows)
+================================================================================
+
+1. Open PowerShell in this folder (n8n-nodes-html-to-pdf)
+
+2. Run:
+   .\install-to-server.ps1 user@your-server-ip
+
+   Example:
+   .\install-to-server.ps1 root@192.168.1.100
+
+3. Follow the prompts and choose how to restart n8n
+
+4. Done! The node will appear in n8n
+
+
+================================================================================
+METHOD 2: MANUAL INSTALLATION (Step by Step)
+================================================================================
+
+LOCAL COMPUTER:
+---------------
+
+1. Open terminal/PowerShell in the n8n-nodes-html-to-pdf folder
+
+2. Install dependencies:
+   npm install
+
+3. Build the package:
+   npm run build
+
+4. Create tarball:
+   npm pack
+
+   This creates: n8n-nodes-html-to-pdf-1.0.0.tgz
+
+5. Upload to server:
+   scp n8n-nodes-html-to-pdf-1.0.0.tgz user@your-server:/tmp/
+
+   Example:
+   scp n8n-nodes-html-to-pdf-1.0.0.tgz root@192.168.1.100:/tmp/
+
+
+ON YOUR SERVER:
+---------------
+
+6. SSH into your server:
+   ssh user@your-server
+
+7. Navigate to n8n custom folder:
+   cd ~/.n8n/custom
+
+   Note: If folder doesn't exist:
+   mkdir -p ~/.n8n/custom
+   cd ~/.n8n/custom
+
+8. Install the package:
+   npm install /tmp/n8n-nodes-html-to-pdf-1.0.0.tgz
+
+9. Install Playwright browser:
+   npx playwright install chromium
+
+10. Restart n8n:
+
+    For systemd:
+    sudo systemctl restart n8n
+
+    For PM2:
+    pm2 restart n8n
+
+    For Docker:
+    docker restart n8n-container
+
+11. Done! Open n8n and search for "HTML to PDF" node
+
+
+================================================================================
+METHOD 3: DOCKER (If n8n runs in Docker)
+================================================================================
+
+1. Build the package locally (steps 1-4 from Method 2)
+
+2. Copy to server (step 5 from Method 2)
+
+3. Copy into Docker container:
+   docker cp /tmp/n8n-nodes-html-to-pdf-1.0.0.tgz n8n-container:/tmp/
+
+4. Install inside container:
+   docker exec -it n8n-container /bin/sh
+   cd ~/.n8n/custom
+   npm install /tmp/n8n-nodes-html-to-pdf-1.0.0.tgz
+   npx playwright install chromium
+   exit
+
+5. Restart container:
+   docker restart n8n-container
+
+
+================================================================================
+VERIFICATION
+================================================================================
+
+1. Check if installed:
+   SSH to server, then:
+   cd ~/.n8n/custom
+   npm list n8n-nodes-html-to-pdf
+
+   Should show: n8n-nodes-html-to-pdf@1.0.0
+
+2. Check n8n logs:
+
+   systemd:
+   sudo journalctl -u n8n -f
+
+   PM2:
+   pm2 logs n8n
+
+   Docker:
+   docker logs -f n8n-container
+
+   Look for: "Loaded custom node: n8n-nodes-html-to-pdf"
+
+3. Test in n8n:
+   - Open n8n in browser
+   - Create new workflow
+   - Click "+" to add node
+   - Search "HTML to PDF"
+   - Node should appear!
+
+
+================================================================================
+TROUBLESHOOTING
+================================================================================
+
+Problem: Node doesn't appear in n8n
+Solution:
+- Make sure n8n was restarted after installation
+- Check installation: cd ~/.n8n/custom && npm list
+- Check n8n logs for errors
+
+Problem: "Playwright browser not found"
+Solution:
+- SSH to server
+- Run: npx playwright install chromium
+
+Problem: Permission errors
+Solution:
+- Check folder permissions: ls -la ~/.n8n/custom
+- Fix: sudo chown -R your-user:your-group ~/.n8n/custom
+
+Problem: Upload fails (scp command)
+Solution:
+- Check SSH access: ssh user@your-server
+- Use password or SSH key
+- Try SFTP/WinSCP if scp doesn't work
+
+
+================================================================================
+ALTERNATIVE: USING WinSCP (Windows GUI Tool)
+================================================================================
+
+If you prefer a GUI instead of command line:
+
+1. Build package locally (steps 1-4 from Method 2)
+
+2. Download WinSCP: https://winscp.net/
+
+3. Connect to your server with WinSCP
+
+4. Upload n8n-nodes-html-to-pdf-1.0.0.tgz to /tmp/
+
+5. Open PuTTY or WinSCP terminal
+
+6. Follow steps 7-11 from Method 2
+
+
+================================================================================
+QUICK REFERENCE
+================================================================================
+
+Your server address: _______________________
+
+n8n installation type: ☐ systemd  ☐ PM2  ☐ Docker  ☐ Other
+
+Commands to remember:
+
+Upload:
+scp n8n-nodes-html-to-pdf-1.0.0.tgz YOUR-USER@YOUR-SERVER:/tmp/
+
+Install:
+ssh YOUR-USER@YOUR-SERVER
+cd ~/.n8n/custom
+npm install /tmp/n8n-nodes-html-to-pdf-1.0.0.tgz
+npx playwright install chromium
+sudo systemctl restart n8n  # or pm2 restart n8n
+
+
+================================================================================
+NEED MORE HELP?
+================================================================================
+
+- Detailed guide: See REMOTE-INSTALL.md
+- Setup guide: See SETUP.md
+- Quick start: See QUICKSTART.md
+- Node documentation: See README.md
+
+================================================================================

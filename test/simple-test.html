@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+            line-height: 1.6;
+        }
+        h1 {
+            color: #333;
+        }
+        .highlight {
+            background-color: #ffeb3b;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Simple HTML to PDF Test</h1>
+    <p>This is a simple test to verify the HTML to PDF conversion works correctly.</p>
+
+    <h2>Features to Test:</h2>
+    <ul>
+        <li>Basic text rendering</li>
+        <li>Headings and formatting</li>
+        <li>Lists (ordered and unordered)</li>
+        <li>Background colors and styling</li>
+    </ul>
+
+    <div class="highlight">
+        <p><strong>Highlighted section:</strong> This section has a yellow background that should be preserved in the PDF.</p>
+    </div>
+
+    <h2>Sample Table</h2>
+    <table border="1" cellpadding="10" style="border-collapse: collapse; width: 100%;">
+        <thead>
+            <tr style="background-color: #4CAF50; color: white;">
+                <th>Item</th>
+                <th>Description</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Test 1</td>
+                <td>Basic rendering</td>
+                <td>✓ Pass</td>
+            </tr>
+            <tr>
+                <td>Test 2</td>
+                <td>Styling support</td>
+                <td>✓ Pass</td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>

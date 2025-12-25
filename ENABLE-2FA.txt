@@ -1,0 +1,79 @@
+================================================================================
+  ENABLE 2FA TO PUBLISH - Required by npm
+================================================================================
+
+npm requires two-factor authentication (2FA) to publish packages.
+
+================================================================================
+OPTION 1: Enable 2FA on npm (RECOMMENDED)
+================================================================================
+
+1. Go to: https://www.npmjs.com/settings/YOUR-USERNAME/tfa
+
+2. Click "Enable 2FA"
+
+3. Choose "Authorization and Publishing" (more secure)
+   or "Authorization Only"
+
+4. Scan QR code with authenticator app:
+   - Google Authenticator (mobile)
+   - Authy (mobile/desktop)
+   - Microsoft Authenticator (mobile)
+
+5. Enter verification code
+
+6. Save backup codes in a safe place
+
+7. Come back and publish again:
+   npm publish --access public
+
+8. When prompted, enter your 2FA code from authenticator app
+
+================================================================================
+OPTION 2: Use Access Token (Alternative)
+================================================================================
+
+1. Go to: https://www.npmjs.com/settings/YOUR-USERNAME/tokens
+
+2. Click "Generate New Token"
+
+3. Choose "Automation" token type
+   (allows publishing without 2FA prompt each time)
+
+4. Copy the token (starts with npm_...)
+
+5. Login with token:
+   npm login
+   Username: YOUR-USERNAME
+   Password: (paste the token here)
+   Email: your-email@example.com
+
+6. Publish:
+   npm publish --access public
+
+================================================================================
+RECOMMENDED: Option 1 (Enable 2FA)
+================================================================================
+
+It's more secure and only takes 2 minutes to set up.
+
+Steps:
+1. Install authenticator app on phone (Google Authenticator or Authy)
+2. Go to https://www.npmjs.com/settings/YOUR-USERNAME/tfa
+3. Enable 2FA
+4. Publish with: npm publish --access public
+5. Enter 2FA code when asked
+
+================================================================================
+AFTER ENABLING 2FA
+================================================================================
+
+Run:
+cd n8n-nodes-html-to-pdf
+npm publish --access public
+
+When prompted, enter your 6-digit 2FA code from authenticator app.
+
+Done! Package will be published! ✅
+
+================================================================================

@@ -1,0 +1,120 @@
+================================================================================
+  HOW TO PUBLISH TO NPM - Simple Instructions for Abo Alhasan
+================================================================================
+
+EVERYTHING IS READY! Just follow these simple steps:
+
+================================================================================
+OPTION 1: AUTOMATED (EASIEST) ⭐ RECOMMENDED
+================================================================================
+
+1. Open PowerShell in this folder (n8n-nodes-html-to-pdf)
+
+2. Run this command:
+   .\publish.ps1
+
+3. Follow the prompts:
+   - Enter your email when asked
+   - Login to npm (or create account at npmjs.com/signup)
+   - Confirm to publish
+
+4. Done! ✅
+
+The script will:
+✅ Update package.json with your email
+✅ Build the package
+✅ Login to npm (if needed)
+✅ Check package name availability
+✅ Publish to npm
+
+================================================================================
+OPTION 2: MANUAL (If automated script doesn't work)
+================================================================================
+
+1. Edit package.json and add your email on line 18:
+   "email": "your-email@example.com"
+
+2. Open PowerShell and run:
+   cd n8n-nodes-html-to-pdf
+   npm install
+   npm run build
+
+3. Login to npm:
+   npm login
+
+   (If no account: go to https://www.npmjs.com/signup first)
+
+4. Publish:
+   npm publish --access public
+
+5. Done! ✅
+
+================================================================================
+IMPORTANT NOTES
+================================================================================
+
+📧 Email: You need to add your email to package.json
+   - The script will ask for it
+   - Or manually edit line 18 in package.json
+
+🔐 npm Account: You need an npm account
+   - Create free at: https://www.npmjs.com/signup
+   - Then login with: npm login
+
+📦 Package Name: n8n-nodes-html-to-pdf
+   - If taken, script will offer alternatives
+   - Can use: @your-username/n8n-nodes-html-to-pdf
+
+================================================================================
+AFTER PUBLISHING
+================================================================================
+
+Your package will be at:
+https://www.npmjs.com/package/n8n-nodes-html-to-pdf
+
+Users can install with:
+npm install n8n-nodes-html-to-pdf
+
+Share it:
+✅ n8n Community Forum: https://community.n8n.io/
+✅ Twitter with #n8n
+✅ LinkedIn
+
+================================================================================
+TROUBLESHOOTING
+================================================================================
+
+Problem: "Email required"
+Solution: Add email in package.json line 18 or when script asks
+
+Problem: "Not logged in"
+Solution: Run: npm login
+
+Problem: "Package name taken"
+Solution: Script will offer to use @your-username/n8n-nodes-html-to-pdf
+
+Problem: "Build failed"
+Solution: Run: npm install && npm run build
+
+================================================================================
+QUICK START - COPY AND PASTE
+================================================================================
+
+cd n8n-nodes-html-to-pdf
+.\publish.ps1
+
+That's it! The script does everything for you.
+
+================================================================================
+CURRENT STATUS
+================================================================================
+
+✅ Package tested - All tests passed
+✅ Package built - Ready to publish
+✅ Author name set - Abo Alhasan
+⚠️  Email needed - Add via script or manually
+⚠️  npm login needed - Script will help
+
+YOUR PACKAGE IS READY! Just run: .\publish.ps1
+
+================================================================================
