@@ -12,14 +12,17 @@
     "threat-report"
   ],
   "license": "MIT",
-  "homepage": "",
+  "homepage": "https://github.com/cce15/n8n-nodes-html-to-pdf#readme",
   "author": {
     "name": "Abo Alhasan",
     "email": ""
   },
   "repository": {
     "type": "git",
-    "url": ""
+    "url": "https://github.com/cce15/n8n-nodes-html-to-pdf.git"
+  },
+  "bugs": {
+    "url": "https://github.com/cce15/n8n-nodes-html-to-pdf/issues"
   },
   "main": "index.js",
   "scripts": {
